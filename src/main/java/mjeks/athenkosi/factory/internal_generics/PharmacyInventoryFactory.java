@@ -6,7 +6,7 @@ import mjeks.athenkosi.util.GenericHelper;
 public class PharmacyInventoryFactory {
 
     public static PharmacyInventory createPharmacyInventory(String drugName, String drugInventory, String drugExpDate,
-                                                            String addedBy, String addedOn, int drugCost){
+                                                            String addedBy, String addedOn, Double drugCost){
 
         PharmacyInventory pharmacyInventory = new PharmacyInventory.PharmacyInventoryBuilder()
                 .setDrugId(GenericHelper.generateId())

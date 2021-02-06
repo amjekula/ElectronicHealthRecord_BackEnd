@@ -10,7 +10,7 @@ public class PharmacyInventory implements Serializable {
     @Id
     private String drugId;
     private String drugName, drugInventory, drugExpDate, addedBy, addedOn;
-    private int drugCost;
+    private Double drugCost;
 
     protected PharmacyInventory() {
     }
@@ -49,13 +49,13 @@ public class PharmacyInventory implements Serializable {
         return addedOn;
     }
 
-    public int getDrugCost() {
+    public Double getDrugCost() {
         return drugCost;
     }
 
     public static class PharmacyInventoryBuilder{
         private String drugId, drugName, drugInventory, drugExpDate, addedBy, addedOn;
-        private int drugCost;
+        private Double drugCost;
 
         public PharmacyInventoryBuilder setDrugId(String drugId) {
             this.drugId = drugId;
@@ -87,7 +87,7 @@ public class PharmacyInventory implements Serializable {
             return this;
         }
 
-        public PharmacyInventoryBuilder setDrugCost(int drugCost) {
+        public PharmacyInventoryBuilder setDrugCost(Double drugCost) {
             this.drugCost = drugCost;
             return this;
         }

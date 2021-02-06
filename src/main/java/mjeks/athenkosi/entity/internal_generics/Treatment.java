@@ -8,19 +8,24 @@ import java.io.Serializable;
 public class Treatment implements Serializable {
 
     @Id
-    private String testId;
-    private String treatmentDisease, treatmentNotes, drugId, patientNo, treatmentDate;
+    private String treatmentId;
+    private String testId, treatmentDisease, treatmentNotes, drugId, patientNo, treatmentDate;
 
     protected Treatment() {
     }
 
     private Treatment(TreatmentBuilder treatmentBuilder) {
+        this.treatmentId = treatmentBuilder.treatmentId;
         this.treatmentDisease = treatmentBuilder.treatmentDisease;
         this.treatmentNotes = treatmentBuilder.treatmentNotes;
         this.testId = treatmentBuilder.testId;
         this.drugId = treatmentBuilder.drugId;
         this.patientNo = treatmentBuilder.patientNo;
         this.treatmentDate = treatmentBuilder.treatmentDate;
+    }
+
+    public String getTreatmentId() {
+        return treatmentId;
     }
 
     public String getTreatmentDisease() {
@@ -48,7 +53,12 @@ public class Treatment implements Serializable {
     }
 
     public static class TreatmentBuilder{
-        private String treatmentDisease, treatmentNotes, testId, drugId, patientNo, treatmentDate;
+        private String treatmentId, treatmentDisease, treatmentNotes, testId, drugId, patientNo, treatmentDate;
+
+        public TreatmentBuilder setTreatmentId(String treatmentId) {
+            this.treatmentId = treatmentId;
+            return this;
+        }
 
         public TreatmentBuilder setTreatmentDisease(String treatmentDisease) {
             this.treatmentDisease = treatmentDisease;
@@ -81,6 +91,7 @@ public class Treatment implements Serializable {
         }
 
         public TreatmentBuilder copy(Treatment treatment){
+            this.treatmentId = treatment.treatmentId;
             this.treatmentDisease = treatment.treatmentDisease;
             this.treatmentNotes = treatment.treatmentNotes;
             this.testId = treatment.testId;

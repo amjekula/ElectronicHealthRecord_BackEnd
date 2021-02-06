@@ -9,7 +9,8 @@ public class LabInventory implements Serializable {
 
     @Id
     private String testId;
-    private String testName, testCost, addedBy, addedOn;
+    private String testName, addedBy, addedOn;
+    private Double testCost;
 
     protected LabInventory() {
     }
@@ -30,7 +31,7 @@ public class LabInventory implements Serializable {
         return testName;
     }
 
-    public String getTestCost() {
+    public Double getTestCost() {
         return testCost;
     }
 
@@ -43,7 +44,8 @@ public class LabInventory implements Serializable {
     }
 
     public static class LabInventoryBuilder{
-        private String testId, testName, testCost, addedBy, addedOn;
+        private String testId, testName, addedBy, addedOn;
+        private Double testCost;
 
         public LabInventoryBuilder setTestId(String testId) {
             this.testId = testId;
@@ -55,7 +57,7 @@ public class LabInventory implements Serializable {
             return this;
         }
 
-        public LabInventoryBuilder setTestCost(String testCost) {
+        public LabInventoryBuilder setTestCost(Double testCost) {
             this.testCost = testCost;
             return this;
         }

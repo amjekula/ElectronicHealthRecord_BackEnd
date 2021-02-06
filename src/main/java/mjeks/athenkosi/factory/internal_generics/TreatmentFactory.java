@@ -1,6 +1,7 @@
 package mjeks.athenkosi.factory.internal_generics;
 
 import mjeks.athenkosi.entity.internal_generics.Treatment;
+import mjeks.athenkosi.util.GenericHelper;
 
 public class TreatmentFactory {
 
@@ -8,6 +9,7 @@ public class TreatmentFactory {
                                             String drugId, String patientNo, String treatmentDate){
 
         Treatment treatment = new Treatment.TreatmentBuilder()
+                .setTreatmentId(GenericHelper.generateId())
                 .setTreatmentDisease(treatmentDisease)
                 .setTreatmentNotes(treatmentNotes)
                 .setTestId(testId)

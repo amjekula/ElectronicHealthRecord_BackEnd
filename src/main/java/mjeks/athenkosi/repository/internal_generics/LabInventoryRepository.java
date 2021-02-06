@@ -8,5 +8,5 @@ import java.util.Set;
 
 @Repository
 public interface LabInventoryRepository extends JpaRepository<LabInventory, String> {
-    //Set<LabInventory> getAll();
+    //Set<LabInventoryController> getAll();
 }

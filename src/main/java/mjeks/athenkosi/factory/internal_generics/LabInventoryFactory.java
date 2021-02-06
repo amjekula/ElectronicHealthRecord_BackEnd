@@ -4,7 +4,7 @@ import mjeks.athenkosi.entity.internal_generics.LabInventory;
 import mjeks.athenkosi.util.GenericHelper;
 
 public class LabInventoryFactory {
-    public static LabInventory createLabInventory(String testName, String testCost,
+    public static LabInventory createLabInventory(String testName, Double testCost,
                                                   String addedBy, String addedOn){
 
         LabInventory labInventory = new LabInventory.LabInventoryBuilder()

@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class LabInventoryImpl implements LabInventoryService {
+public class LabInventoryServiceImpl implements LabInventoryService {
 
     @Autowired
     private LabInventoryRepository labInventoryRepository;
