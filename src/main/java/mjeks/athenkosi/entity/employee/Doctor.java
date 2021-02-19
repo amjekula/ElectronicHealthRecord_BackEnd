@@ -1,7 +1,6 @@
 package mjeks.athenkosi.entity.employee;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -9,40 +8,42 @@ public class Doctor implements Serializable {
 
     @Id
     private String doctorNo;
-    private String staffNo;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Staff staff;
 
     protected Doctor() {
     }
 
     private Doctor(DoctorBuilder doctorBuilder) {
         this.doctorNo = doctorBuilder.doctorNo;
-        this.staffNo = doctorBuilder.staffNo;
+        this.staff = doctorBuilder.staff;
     }
 
     public String getDoctorNo() {
         return doctorNo;
     }
 
-    public String getStaffNo() {
-        return staffNo;
+    public Staff getStaff() {
+        return staff;
     }
 
     public static class DoctorBuilder{
-        private String doctorNo, staffNo;
+        private String doctorNo;
+        private Staff staff;
 
         public DoctorBuilder setDoctorNo(String doctorNo) {
             this.doctorNo = doctorNo;
             return this;
         }
 
-        public DoctorBuilder setStaffNo(String staffNo) {
-            this.staffNo = staffNo;
+        public DoctorBuilder setStaff(Staff staff) {
+            this.staff = staff;
             return this;
         }
 
         public DoctorBuilder copy(Doctor doctor){
             this.doctorNo = doctor.doctorNo;
-            this.staffNo = doctor.staffNo;
+            this.staff = doctor.staff;
             return this;
         }
 

@@ -3,78 +3,58 @@ package mjeks.athenkosi.entity.patient;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 public class PatientLogin implements Serializable {
 
     @Id
-    private String patientNo;
-    private String username, password, loginDate, logoutTime;
+    private String loginNumber;
+    private Date loginDate, logoutTime;
 
 
     protected PatientLogin() {
     }
 
     private PatientLogin(PatientLoginBuilder patientLoginBuilder) {
-        this.patientNo = patientLoginBuilder.patientNo;
-        this.username = patientLoginBuilder.username;
-        this.password = patientLoginBuilder.password;
+        this.loginNumber = patientLoginBuilder.loginNumber;
         this.loginDate = patientLoginBuilder.loginDate;
         this.logoutTime = patientLoginBuilder.logoutTime;
     }
 
-    public String getPatientNo() {
-        return patientNo;
+    public String getLoginNumber() {
+        return loginNumber;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getLoginDate() {
+    public Date getLoginDate() {
         return loginDate;
     }
 
-    public String getLogoutTime() {
+    public Date getLogoutTime() {
         return logoutTime;
     }
 
     public static class PatientLoginBuilder{
-        private String patientNo, username, password, loginDate, logoutTime;
+        private String loginNumber;
+        private Date loginDate, logoutTime;
 
-        public PatientLoginBuilder setPatientNo(String patientNo) {
-            this.patientNo = patientNo;
+        public PatientLoginBuilder setLoginNumber(String loginNumber) {
+            this.loginNumber = loginNumber;
             return this;
         }
 
-        public PatientLoginBuilder setUsername(String username) {
-            this.username = username;
-            return this;
-        }
-
-        public PatientLoginBuilder setPassword(String password) {
-            this.password = password;
-            return this;
-        }
-
-        public PatientLoginBuilder setLoginDate(String loginDate) {
+        public PatientLoginBuilder setLoginDate(Date loginDate) {
             this.loginDate = loginDate;
             return this;
         }
 
-        public PatientLoginBuilder setLogoutTime(String logoutTime) {
+        public PatientLoginBuilder setLogoutTime(Date logoutTime) {
             this.logoutTime = logoutTime;
             return this;
         }
 
         public PatientLoginBuilder copy(PatientLogin patientLogin){
-            this.patientNo = patientLogin.patientNo;
-            this.username = patientLogin.username;
-            this.password = patientLogin.password;
+            this.loginNumber = patientLogin.loginNumber;
             this.loginDate = patientLogin.loginDate;
             this.logoutTime = patientLogin.logoutTime;
             return this;

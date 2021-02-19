@@ -1,5 +1,6 @@
 package mjeks.athenkosi.service.employee;
 
+import mjeks.athenkosi.entity.employee.Staff;
 import mjeks.athenkosi.entity.employee.StaffLogin;
 import mjeks.athenkosi.service.IService;
 

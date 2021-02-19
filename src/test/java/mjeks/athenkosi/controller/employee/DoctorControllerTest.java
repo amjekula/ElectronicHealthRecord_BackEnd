@@ -1,7 +1,11 @@
 package mjeks.athenkosi.controller.employee;
 
 import mjeks.athenkosi.entity.employee.Doctor;
+import mjeks.athenkosi.entity.employee.Staff;
+import mjeks.athenkosi.entity.internal_generics.Department;
 import mjeks.athenkosi.factory.employee.DoctorFactory;
+import mjeks.athenkosi.factory.employee.StaffFactory;
+import mjeks.athenkosi.factory.internal_generics.DepartmentFactory;
 import mjeks.athenkosi.util.GenericHelper;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -13,6 +17,10 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.Assert.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -23,7 +31,13 @@ public class DoctorControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/electronichealthrecord/doctor";
-    private Doctor doctor = DoctorFactory.createDoctor(GenericHelper.generateId());
+
+    Date date = new Date();
+    Department department = DepartmentFactory.createDepartment("Khayelitsha", "Athenkosi", "2552");
+    Staff staff = StaffFactory.createStaff("Athi", "Mjeks", "8520",
+            "1234","Diploma", department, "544", "Ayanda");
+    private Doctor doctor = DoctorFactory.createDoctor(staff);
+
 
     @Test
     public void a_create() {
@@ -35,12 +49,13 @@ public class DoctorControllerTest {
 
         System.out.println("Status Code: " + postResponse.getStatusCode());
         doctor = postResponse.getBody();
-        System.out.println("Control Clerk: " + doctor);
+        System.out.println("Doctor: " + doctor);
         assertEquals(doctor.getDoctorNo(), postResponse.getBody().getDoctorNo());
     }
 
     @Test
     public void b_read() {
+
     }
 
     @Test

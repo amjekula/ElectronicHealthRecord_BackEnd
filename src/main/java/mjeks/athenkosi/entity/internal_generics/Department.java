@@ -1,7 +1,8 @@
 package mjeks.athenkosi.entity.internal_generics;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import mjeks.athenkosi.entity.employee.Staff;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -10,6 +11,9 @@ public class Department implements Serializable {
     @Id
     private String depNo;
     private String depName, addedBy, addedOn;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "department")
+    private Staff staff;
 
     protected Department() {
     }
@@ -20,6 +24,7 @@ public class Department implements Serializable {
         this.addedBy = departmentBuilder.addedBy;
         this.addedOn = departmentBuilder.addedOn;
     }
+
 
     public String getDepNo() {
         return depNo;

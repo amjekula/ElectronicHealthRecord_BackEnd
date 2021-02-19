@@ -17,9 +17,8 @@ public class PatientLoginController {
 
     @PostMapping("/create")
     public PatientLogin create(@RequestBody PatientLogin patientLogin){
-        PatientLogin login = PatientLoginFactory.createPatientLogin(patientLogin.getPatientNo(),
-                patientLogin.getUsername(), patientLogin.getPassword(), patientLogin.getLoginDate(),
-                patientLogin.getLogoutTime());
+        PatientLogin login = PatientLoginFactory.createPatientLogin(patientLogin.getLoginNumber(),
+                             patientLogin.getLogoutTime());
 
         return this.patientLoginService.create(login);
     }

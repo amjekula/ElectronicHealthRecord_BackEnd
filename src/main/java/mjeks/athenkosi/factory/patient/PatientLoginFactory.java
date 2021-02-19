@@ -2,16 +2,17 @@ package mjeks.athenkosi.factory.patient;
 
 import mjeks.athenkosi.entity.patient.PatientLogin;
 
+import java.util.Date;
+
 public class PatientLoginFactory {
 
-    public static PatientLogin createPatientLogin(String patientNo, String username,
-                                                  String password, String loginDate, String logoutTime){
+    public static PatientLogin createPatientLogin(String loginNumber, Date logoutTime){
+
+        Date date = new Date();
 
         PatientLogin patientLogin = new PatientLogin.PatientLoginBuilder()
-                .setPatientNo(patientNo)
-                .setUsername(username)
-                .setPassword(password)
-                .setLoginDate(loginDate)
+                .setLoginNumber(loginNumber)
+                .setLoginDate(date)
                 .setLogoutTime(logoutTime).build();
 
         return patientLogin;

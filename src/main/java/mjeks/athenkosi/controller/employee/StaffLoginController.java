@@ -17,14 +17,13 @@ public class StaffLoginController {
 
     @PostMapping("/create")
     public StaffLogin create(@RequestBody StaffLogin staffLogin){
-        StaffLogin newStaffLogin = StaffLoginFactory.createStaffLogin(staffLogin.getStaffNo(), staffLogin.getUsername(),
-                                    staffLogin.getPassword(), staffLogin.getLoginDate(), staffLogin.getLogoutTime());
+        StaffLogin newStaffLogin = StaffLoginFactory.createStaffLogin(staffLogin.getLoginDate(), staffLogin.getLogoutTime());
         return this.staffLoginService.create(newStaffLogin);
     }
 
-    @GetMapping("/read/{loginId}")
-    public StaffLogin read(@PathVariable String loginId){
-        return this.staffLoginService.read(loginId);
+    @GetMapping("/read/{loginNumber}")
+    public StaffLogin read(@PathVariable String loginNumber){
+        return this.staffLoginService.read(loginNumber);
     }
 
     @PostMapping("/update")
@@ -32,9 +31,9 @@ public class StaffLoginController {
         return this.staffLoginService.update(staffLogin);
     }
 
-    @DeleteMapping("/delete/{loginId}")
-    public void delete(@PathVariable String loginId){
-        this.staffLoginService.delete(loginId);
+    @DeleteMapping("/delete/{loginNumber}")
+    public void delete(@PathVariable String loginNumber){
+        this.staffLoginService.delete(loginNumber);
     }
 
     @GetMapping("/all")

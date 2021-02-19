@@ -32,7 +32,7 @@ public class PatientLoginServiceImpl implements PatientLoginService {
 
     @Override
     public PatientLogin update(PatientLogin patientLogin) {
-        if(this.patientLoginRepository.existsById(patientLogin.getPatientNo())){
+        if(this.patientLoginRepository.existsById(patientLogin.getLoginNumber())){
             return this.patientLoginRepository.save(patientLogin);
         }else{
             return null;

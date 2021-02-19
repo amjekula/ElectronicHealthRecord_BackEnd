@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/inventoryhealthrecord/staff")
+@RequestMapping("/electronichealthrecord/staff")
 public class StaffController {
 
     @Autowired
@@ -18,8 +18,8 @@ public class StaffController {
     @PostMapping("/create")
     public Staff create(@RequestBody Staff staff){
         Staff newStaff = StaffFactory.createStaff(staff.getFirstName(), staff.getLastName(),
-                staff.getMiddleName(), staff.getQualification(), staff.getDeptId(), staff.getAccessLevel(),
-                staff.getAddedBy(), staff.getJoiningDate());
+                staff.getIdNumber(), staff.getPassword(), staff.getQualification(), staff.getDepartment() /*staff.getDeptId()*/,
+                staff.getAccessLevel(), staff.getAddedBy());
 
         return this.staffService.create(newStaff);
     }

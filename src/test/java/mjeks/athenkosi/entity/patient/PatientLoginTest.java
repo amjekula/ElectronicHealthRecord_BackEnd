@@ -17,25 +17,13 @@ public class PatientLoginTest {
     SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-mm-dd HH: mm");
 
     PatientLogin patientLogin = new PatientLogin.PatientLoginBuilder()
-            .setLoginDate(dateFormatter.format(date))
-            .setPatientNo(GenericHelper.generateId())
-            .setLogoutTime(timeFormatter.format(date))
-            .setPassword("8520")
-            .setUsername("Athi")
+            //.setLoginDate(dateFormatter.format(date))
+            .setLoginNumber(GenericHelper.generateId())
+            .setLogoutTime(date)
             .build();
     @Test
     public void getPatientNo() {
-        assertNotNull(patientLogin.getPatientNo());
-    }
-
-    @Test
-    public void getUsername() {
-        assertEquals("Athi", patientLogin.getUsername());
-    }
-
-    @Test
-    public void getPassword() {
-        assertEquals("8520", patientLogin.getPassword());
+        assertNotNull(patientLogin.getLoginNumber());
     }
 
     @Test

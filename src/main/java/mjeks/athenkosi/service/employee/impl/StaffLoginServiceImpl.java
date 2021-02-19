@@ -1,5 +1,6 @@
 package mjeks.athenkosi.service.employee.impl;
 
+import mjeks.athenkosi.entity.employee.Staff;
 import mjeks.athenkosi.entity.employee.StaffLogin;
 import mjeks.athenkosi.repository.employee.StaffLoginRepository;
 import mjeks.athenkosi.service.employee.StaffLoginService;
@@ -26,13 +27,13 @@ public class StaffLoginServiceImpl implements StaffLoginService {
     }
 
     @Override
-    public StaffLogin read(String loginId) {
-        return this.staffRepository.findById(loginId).orElse(null);
+    public StaffLogin read(String loginNumber) {
+        return this.staffRepository.findById(loginNumber).orElse(null);
     }
 
     @Override
     public StaffLogin update(StaffLogin staffLogin) {
-        if(this.staffRepository.existsById(staffLogin.getStaffNo())){
+        if(this.staffRepository.existsById(staffLogin.getLoginNumber())){
             return this.staffRepository.save(staffLogin);
         }else{
             return null;
@@ -40,7 +41,7 @@ public class StaffLoginServiceImpl implements StaffLoginService {
     }
 
     @Override
-    public void delete(String loginId) {
-        this.staffRepository.deleteById(loginId);
+    public void delete(String loginNumber) {
+        this.staffRepository.deleteById(loginNumber);
     }
 }

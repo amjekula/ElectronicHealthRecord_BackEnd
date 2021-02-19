@@ -1,28 +1,31 @@
 package mjeks.athenkosi.factory.employee;
 
 import mjeks.athenkosi.entity.employee.Staff;
+import mjeks.athenkosi.entity.internal_generics.Department;
 import mjeks.athenkosi.util.GenericHelper;
 
 import java.util.Date;
 
 public class StaffFactory {
 
-    public static Staff createStaff(String firstName, String lastName, String middleName,
-                                    String qualification, String deptId, String accessLevel, String addedBy,
-                                    Date joiningDate){
+    public static Staff createStaff(String firstName, String lastName, String idNumber, String password,
+                                    String qualification, Department department/*String deptId*/, String accessLevel, String addedBy){
 
         String staffId = GenericHelper.generateId();
+        Date date = new Date();
 
         Staff buildStaff = new Staff.StaffBuilder()
                 .setStaffId(staffId)
                 .setFirstName(firstName)
                 .setLastName(lastName)
-                .setMiddleName(middleName)
+                .setIdNumber(idNumber)
+                .setPassword(password)
                 .setQualification(qualification)
-                .setDeptId(deptId)
+                //.setDeptId(deptId)
+                .setDepartment(department)
                 .setAccessLevel(accessLevel)
                 .setAddedBy(addedBy)
-                .setJoiningDate(joiningDate)
+                .setJoiningDate(date)
                 .build();
 
         return buildStaff;

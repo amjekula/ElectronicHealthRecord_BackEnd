@@ -17,7 +17,7 @@ public class PatientLoginFactoryTest {
 
 
     PatientLogin patientLoginFactory = PatientLoginFactory.createPatientLogin(GenericHelper.generateId(),
-            "athenkosi", "8520", dateFormatter.format(date), timeFormatter.format(date));
+             date);
 
     @Test
     public void createPatientLogin() {

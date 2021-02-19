@@ -17,7 +17,7 @@ public class DoctorController {
 
     @PostMapping("/create")
     public Doctor create(@RequestBody Doctor doctor){
-        Doctor newDoctor = DoctorFactory.createDoctor(doctor.getStaffNo());
+        Doctor newDoctor = DoctorFactory.createDoctor(doctor.getStaff());
 
         return this.doctorServiceImpl.create(newDoctor);
     }
