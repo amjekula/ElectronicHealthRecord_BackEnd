@@ -1,5 +1,6 @@
 package mjeks.athenkosi.entity.employee;
 
+import mjeks.athenkosi.entity.external_generics.Address;
 import mjeks.athenkosi.entity.internal_generics.Department;
 
 import javax.persistence.*;
@@ -14,16 +15,17 @@ public class Staff implements Serializable {
     @Id
     private String staffId;
     private String firstName, lastName, idNumber, password, qualification,
-                    /*deptId,*/ accessLevel, addedBy;
+                    accessLevel, addedBy;
     private Date joiningDate;
+
     @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     private Department department;
 
+    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    private Address address;
+
     @OneToMany(mappedBy="staff", cascade = CascadeType.ALL)
     Set<Doctor> doctors = new HashSet<Doctor>();
-
-   /* @OneToMany(mappedBy="staff", cascade = CascadeType.ALL)
-    Set<StaffLogin> staffLoginSet = new HashSet<StaffLogin>();*/
 
     protected Staff() {
     }
@@ -33,9 +35,9 @@ public class Staff implements Serializable {
         this.firstName = staffBuilder.firstName;
         this.lastName = staffBuilder.lastName;
         this.idNumber = staffBuilder.idNumber;
+        this.address = staffBuilder.address;
         this.password = staffBuilder.password;
         this.qualification = staffBuilder.qualification;
-        //this.deptId = staffBuilder.deptId;
         this.department = staffBuilder.department;
         this.accessLevel = staffBuilder.accessLevel;
         this.addedBy = staffBuilder.addedBy;
@@ -58,6 +60,10 @@ public class Staff implements Serializable {
         return idNumber;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -65,10 +71,6 @@ public class Staff implements Serializable {
     public String getQualification() {
         return qualification;
     }
-
-    /*public String getDeptId() {
-        return deptId;
-    }*/
 
     public Department getDepartment() {
         return department;
@@ -88,8 +90,9 @@ public class Staff implements Serializable {
 
     public static class StaffBuilder {
         private String staffId, firstName, lastName, idNumber, password, qualification,
-                /*deptId,*/ accessLevel, addedBy;
+                accessLevel, addedBy;
         private Department department;
+        private Address address;
         private Date joiningDate;
 
         public StaffBuilder setStaffId(String staffId) {
@@ -112,6 +115,11 @@ public class Staff implements Serializable {
             return this;
         }
 
+        public StaffBuilder setAddress(Address address) {
+            this.address = address;
+            return this;
+        }
+
         public StaffBuilder setPassword(String password) {
             this.password = password;
             return this;
@@ -121,11 +129,6 @@ public class Staff implements Serializable {
             this.qualification = qualification;
             return this;
         }
-
-        /*public StaffBuilder setDeptId(String deptId) {
-            this.deptId = deptId;
-            return this;
-        }*/
 
         public StaffBuilder setDepartment(Department department) {
             this.department = department;
@@ -153,8 +156,8 @@ public class Staff implements Serializable {
             this.lastName = staff.lastName;
             this.idNumber = staff.idNumber;
             this.password = staff.password;
+            this.address = staff.address;
             this.qualification = staff.qualification;
-            //this.deptId = staff.deptId;
             this.department = staff.department;
             this.accessLevel = staff.accessLevel;
             this.addedBy = staff.addedBy;

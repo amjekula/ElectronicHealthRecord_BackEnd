@@ -1,6 +1,7 @@
 package mjeks.athenkosi.factory.employee;
 
 import mjeks.athenkosi.entity.employee.Staff;
+import mjeks.athenkosi.entity.external_generics.Address;
 import mjeks.athenkosi.entity.internal_generics.Department;
 import mjeks.athenkosi.util.GenericHelper;
 
@@ -9,7 +10,7 @@ import java.util.Date;
 public class StaffFactory {
 
     public static Staff createStaff(String firstName, String lastName, String idNumber, String password,
-                                    String qualification, Department department/*String deptId*/, String accessLevel, String addedBy){
+                                    String qualification, Address address, Department department, String accessLevel, String addedBy){
 
         String staffId = GenericHelper.generateId();
         Date date = new Date();
@@ -20,8 +21,8 @@ public class StaffFactory {
                 .setLastName(lastName)
                 .setIdNumber(idNumber)
                 .setPassword(password)
+                .setAddress(address)
                 .setQualification(qualification)
-                //.setDeptId(deptId)
                 .setDepartment(department)
                 .setAccessLevel(accessLevel)
                 .setAddedBy(addedBy)

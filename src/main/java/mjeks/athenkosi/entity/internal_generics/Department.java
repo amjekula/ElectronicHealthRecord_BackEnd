@@ -15,6 +15,8 @@ public class Department implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "department")
     private Staff staff;
 
+
+
     protected Department() {
     }
 

@@ -18,7 +18,7 @@ public class StaffController {
     @PostMapping("/create")
     public Staff create(@RequestBody Staff staff){
         Staff newStaff = StaffFactory.createStaff(staff.getFirstName(), staff.getLastName(),
-                staff.getIdNumber(), staff.getPassword(), staff.getQualification(), staff.getDepartment() /*staff.getDeptId()*/,
+                staff.getIdNumber(), staff.getPassword(), staff.getQualification(), staff.getAddress(), staff.getDepartment(),
                 staff.getAccessLevel(), staff.getAddedBy());
 
         return this.staffService.create(newStaff);

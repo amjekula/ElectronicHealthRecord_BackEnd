@@ -1,7 +1,7 @@
 package mjeks.athenkosi.entity.external_generics;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import mjeks.athenkosi.entity.employee.Staff;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -10,6 +10,9 @@ public class Address implements Serializable {
     @Id
     private String id;
     private String country, province, town, suburb, postalCode, streetAddress;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "address")
+    private Staff staff;
 
     protected Address() {
     }

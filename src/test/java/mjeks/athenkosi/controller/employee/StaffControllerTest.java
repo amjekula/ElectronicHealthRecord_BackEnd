@@ -2,8 +2,10 @@ package mjeks.athenkosi.controller.employee;
 
 import mjeks.athenkosi.entity.employee.Doctor;
 import mjeks.athenkosi.entity.employee.Staff;
+import mjeks.athenkosi.entity.external_generics.Address;
 import mjeks.athenkosi.entity.internal_generics.Department;
 import mjeks.athenkosi.factory.employee.StaffFactory;
+import mjeks.athenkosi.factory.external_generics.AddressFactory;
 import mjeks.athenkosi.factory.internal_generics.DepartmentFactory;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -27,9 +29,12 @@ public class StaffControllerTest {
     private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/electronichealthrecord/staff";
 
-    Department department = DepartmentFactory.createDepartment("Khayelitsha", "Athenkosi", "2552");
-    Staff staff = StaffFactory.createStaff("Athi", "Mjeks", "8520",
-            "1234","Diploma", department, "544", "Ayanda");
+    private Department department = DepartmentFactory.createDepartment("Khayelitsha", "Athenkosi",
+            "2552");
+    private Address address = AddressFactory.createAddress("South Africa", "Western Cape", "Cape Town",
+            "Observetory", "7441", "6 Browning Road");
+    private Staff staff = StaffFactory.createStaff("Athi", "Mjeks", "8520",
+            "1234","Diploma", address, department, "544", "Ayanda");
     @Test
     public void create() {
         System.out.println(department);

@@ -1,5 +1,6 @@
 package mjeks.athenkosi.factory.external_generics;
 
+import mjeks.athenkosi.entity.employee.Staff;
 import mjeks.athenkosi.entity.external_generics.Address;
 import mjeks.athenkosi.util.GenericHelper;
 
