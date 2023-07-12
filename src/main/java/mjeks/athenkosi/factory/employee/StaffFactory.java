@@ -15,7 +15,7 @@ public class StaffFactory {
         String staffId = GenericHelper.generateId();
         Date date = new Date();
 
-        Staff buildStaff = new Staff.StaffBuilder()
+        return new Staff.StaffBuilder()
                 .setStaffId(staffId)
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -28,7 +28,5 @@ public class StaffFactory {
                 .setAddedBy(addedBy)
                 .setJoiningDate(date)
                 .build();
-
-        return buildStaff;
     }
 }

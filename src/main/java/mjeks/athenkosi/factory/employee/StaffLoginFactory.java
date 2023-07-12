@@ -7,12 +7,10 @@ public class StaffLoginFactory {
 
     public static StaffLogin createStaffLogin(String loginDate, String logoutTime){
 
-        StaffLogin staffLogin = new StaffLogin.StaffLoginBuilder()
+        return new StaffLogin.StaffLoginBuilder()
                 .setLoginNumber(GenericHelper.generateId())
                 .setLoginDate(loginDate)
                 .setLogoutTime(logoutTime)
                 .build();
-
-        return staffLogin;
     }
 }

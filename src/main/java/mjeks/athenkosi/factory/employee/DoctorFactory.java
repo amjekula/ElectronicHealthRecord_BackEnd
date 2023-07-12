@@ -6,7 +6,9 @@ import mjeks.athenkosi.util.GenericHelper;
 
 public class DoctorFactory {
     public static Doctor createDoctor(Staff staff){
-        Doctor doctor = new Doctor.DoctorBuilder().setDoctorNo(GenericHelper.generateId()).setStaff(staff).build();
-        return doctor;
+        return new Doctor.DoctorBuilder()
+                .setDoctorNo(GenericHelper.generateId())
+                .setStaff(staff)
+                .build();
     }
 }
